@@ -15,20 +15,16 @@ import pages.TitlePage;
 public class AbstractTest {
 
 	protected WebDriver driver;
-	protected HomePage onHomePage;
-	protected ShopPage onShopPage;
-	protected TitlePage onTitlePage;
+	private String baseURL = "https://littlerock.test.devsmm.com/";
+
 
 	@Before
 	public void setUp() {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.navigate().to(baseURL);
 
-		onShopPage = PageFactory.initElements(driver, ShopPage.class);
-		onTitlePage = PageFactory.initElements(driver, TitlePage.class);
-		onHomePage = PageFactory.initElements(driver, HomePage.class);
 
-		onHomePage.navigateToHome();
 	}
 
 	@After
